@@ -1,0 +1,19 @@
+Changelog
+=========
+
+0.4 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
+0.3 (2016-08-05)
+----------------
+
+- Nothing changed yet.
+
+
+0.2 (2016-08-04)
+----------------
+
+  - Nothing changed yet.

@@ -11,12 +11,8 @@ dolmen.template
 dolmen.view
 js.bootstrap
 setuptools
-uvclight[sql]
-uvclight[auth]
 wsgistate
-ul.auth
 gk.login
-gk.layout
 gk.admin
 gk.backends
 gk.crypto

@@ -5,7 +5,7 @@ import base64
 import hmac
 import os
 
-from urllib import unquote
+from urllib.parse import unquote
 from Crypto import Random
 from Crypto.Cipher import AES
 from Crypto.PublicKey import RSA

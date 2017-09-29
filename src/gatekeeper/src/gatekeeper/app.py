@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from cromlech.browser import exceptions, setSession, IView
+from cromlech.browser import exceptions, setSession, IView, IPublicationRoot
 from cromlech.webob.request import Request
 from cromlech.sqlalchemy import SQLAlchemySession
 
@@ -17,7 +17,7 @@ def query_view(request, obj, name=""):
     return IView(obj, request, name=name)
 
 
-@implementer(IRootObject)
+@implementer(IPublicationRoot)
 class GateKeeper(Location):
 
     def __init__(self, engine):
@@ -68,4 +68,4 @@ class Keeper(object):
         response = view()
 
         return response(environ, start_response)
-    return publisher
+

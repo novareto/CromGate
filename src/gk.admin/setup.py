@@ -30,28 +30,18 @@ setup(name='gk.admin',
       zip_safe=False,
       extras_require={'test': test_requires},
       install_requires=[
-          'uvc.themes.btwidgets',
           'barrel',
           'cromlech.dawnlight',
           'cromlech.i18n',
           'cromlech.security',
           'cromlech.webob',
-          'dolmen.sqlcontainer',
           'sqlalchemy',
           'transaction',
-          'ul.auth',
-          'uvclight',
           'zope.i18nmessageid',
           'zope.interface',
           'zope.location',
           'zope.schema',
         ],
       entry_points={
-         'paste.app_factory': [
-             'app = gk.admin:admin',
-         ],
-        'paste.filter_app_factory': [
-            'messages = gk.admin:messages_injector',
-        ]
       }
       )

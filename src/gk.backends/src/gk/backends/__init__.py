@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import xmlrpclib
 import socket
+from xmlrpc.client import Transport
 from zope.interface import Interface, Attribute, implementer
 
 
@@ -21,18 +21,18 @@ class IPortal(Interface):
         pass
 
 
-class TimeoutTransport(xmlrpclib.Transport):
+class TimeoutTransport(Transport):
     """
     Custom XML-RPC transport class for HTTP connections, allowing a timeout in
     the base connection.
     """
 
     def __init__(self, timeout=socket._GLOBAL_DEFAULT_TIMEOUT, use_datetime=0):
-        xmlrpclib.Transport.__init__(self, use_datetime)
+        Transport.__init__(self, use_datetime)
         self._timeout = timeout
 
     def make_connection(self, host):
-        conn = xmlrpclib.Transport.make_connection(self, host)
+        conn = Transport.make_connection(self, host)
         conn.timeout = self._timeout
         return conn
 

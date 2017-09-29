@@ -1,14 +1,10 @@
-uvc.themes.btwidgets
 barrel
 cromlech.dawnlight
 cromlech.i18n
 cromlech.security
 cromlech.webob
-dolmen.sqlcontainer
 sqlalchemy
 transaction
-ul.auth
-uvclight
 zope.i18nmessageid
 zope.interface
 zope.location

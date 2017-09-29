@@ -4,14 +4,12 @@ import datetime
 import transaction
 import zope.schema
 
-from .auth import secured
+from cromlech.browser import IPublicationRoot
 from cromlech.dawnlight import DawnlightPublisher, ViewLookup
-from cromlech.i18n.utils import setLanguage
+from cromlech.i18n import Locale
 from cromlech.security import Interaction
-from cromlech.sqlalchemy import (
-    SQLAlchemySession, create_engine, create_and_register_engine)
+from cromlech.sqlalchemy import SQLAlchemySession, create_engine
 from cromlech.webob import Request
-from cromlech.i18n import EnvironLocale
 from dolmen.sqlcontainer import SQLContainer
 
 from sqlalchemy import Column, Text, Integer, DateTime, String
@@ -104,7 +102,6 @@ class IMessage(Interface):
 
 
 class Message(Location, Admin):
-    require('zope.Public')
 
     __tablename__ = 'messages'
 
@@ -120,7 +117,7 @@ class MessagesRoot(SQLContainer):
     factory = model = Message
 
 
-@implementer(IRootObject)
+@implementer(IPublicationRoot)
 class AdminRoot(Location):
 
     def __init__(self, pkey, dbkey):
@@ -155,7 +152,7 @@ def admin(global_conf, dburl, dbkey, pkey, session_key, layer=None, **kwargs):
 
     def app(environ, start_response):
         principal = unauthenticated_principal
-        with EnvironLocale(environ):
+        with Locale('de'):
             with ContextualProtagonist(principal):
                 session = environ[session_key].session
                 setSession(session)

@@ -44,27 +44,28 @@ class GateKeeper(Location):
 
 class Keeper(object):
 
-    def __init__(self, engine):
+    def __init__(self, engine, pubkey):
         self.site = GateKeeper(engine)
+        self.pubkey = pubkey
         
-    def publisher(environ, start_response):
+    def publisher(self, environ, start_response):
 
-        @tlib.signed_cookie(pubkey)
+        @tlib.signed_cookie(self.pubkey)
         def publish(request, root):
-            view = query_view(request, self.site, name=u'index')
+            view = query_view(request, root, name=u'index')
             if view is not None:
                 return view
-            return query_view(request, self.site, name=u'notfound')
+            return query_view(request, root, name=u'notfound')
 
         request = Request(environ)
-        if layer is not None:
-            skin_layer = eval_loader(layer)
-            alsoProvides(request, skin_layer)
+        # if layer is not None:
+        #    skin_layer = eval_loader(layer)
+        #    alsoProvides(request, skin_layer)
 
-        view, error = publish(request, site)
+        view, error = publish(request, self.site)
         if error is not None:
-            view = query_view(request, site, name=u'unauthorized')
-            view.set_message(error.title)
+            view = query_view(request, self.site, name='unauthorized')
+            # view.set_message(error.title)
         response = view()
 
         return response(environ, start_response)

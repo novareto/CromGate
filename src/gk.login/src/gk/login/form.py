@@ -14,7 +14,7 @@ from dolmen.forms.base import Form, Actions, Action, Fields
 from dolmen.message import send
 
 from gk.crypto import ticket as tlib
-from urllib import quote
+from urllib.parse import quote
 from webob.exc import HTTPFound
 from zope.i18nmessageid import MessageFactory
 
@@ -66,9 +66,7 @@ class LogMe(Action):
             send(_(u'Login successful.'))
             res = self.cook(
                 form, login, password, authenticated_for, form.context.dest)
-            print "-" * 44
-            print res
-            print "-" * 44
+            print(res)
             raise DirectResponse(res)
         else:
             sent = send(_(u'Login failed.'))
@@ -84,7 +82,7 @@ class BaseLoginForm(Form):
     fields = Fields(ILoginForm)
     fields['back'].mode = HIDDEN
     fields['back'].prefix = ""
-    actions = Actions(LogMe(_(u'Authenticate'), default=_(u"Authenticate")))
+    actions = Actions(LogMe(_(u'Authenticate')))
     ignoreRequest = False
 
     def back(self, login):

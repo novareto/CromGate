@@ -1,5 +1,5 @@
 barrel
-PyCrypto
+pycryptodome
 cromlech.browser
 cromlech.dawnlight
 cromlech.security

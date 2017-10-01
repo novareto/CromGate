@@ -46,11 +46,12 @@ class BadSignature(TicketParseError):
 
 
 def read_key(path, passphrase=None):
-    with open(path, "r") as kd:
+    with open(path, "rb") as kd:
+        data = kd.read()
         if passphrase is not None:
-            key = RSA.importKey(kd, passphrase=passphrase)
+            key = RSA.importKey(data, passphrase=passphrase)
         else:
-            key = RSA.importKey(kd)
+            key = RSA.importKey(data)
     return key
 
 

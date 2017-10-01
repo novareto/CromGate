@@ -19,7 +19,7 @@ setup(name='gatekeeper',
       zip_safe=False,
       install_requires=[
           "barrel",
-          "PyCrypto",
+          "pycryptodome",
           "cromlech.browser",
           "cromlech.dawnlight",
           "cromlech.security",

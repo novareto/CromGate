@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from uvclight import get_template
+from os import path
 from zope.interface import Interface
 from zope.schema import TextLine, Password
 from zope.i18nmessageid import MessageFactory
 
 
 _ = MessageFactory("gatekeeper")
-
-
-timeout_template = get_template('timeout.pt', __file__)
-unauthorized_template = get_template('unauthorized.pt', __file__)
 
 
 class ILoginForm(Interface):

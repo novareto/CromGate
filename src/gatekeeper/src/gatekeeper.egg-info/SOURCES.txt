@@ -1,6 +1,7 @@
 setup.py
 src/gatekeeper/__init__.py
 src/gatekeeper/app.py
+src/gatekeeper/login.py
 src/gatekeeper.egg-info/PKG-INFO
 src/gatekeeper.egg-info/SOURCES.txt
 src/gatekeeper.egg-info/dependency_links.txt

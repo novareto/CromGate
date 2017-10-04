@@ -9,12 +9,8 @@ from zope.interface import alsoProvides, implementer
 from zope.location import Location
 
 from gk.crypto import ticket as tlib
-from gk.backends import IPortal, XMLRPCPortal
 from gk.admin import Admin, get_valid_messages, styles
-
-
-def query_view(request, obj, name=""):
-    return IView(obj, request, name=name)
+from . import query_view
 
 
 @implementer(IPublicationRoot)

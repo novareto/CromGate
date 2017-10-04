@@ -1,0 +1,82 @@
+# , fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-27 09:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: gk.layout\n"
+
+#: ./forms.py:46
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ./templates/admin.pt:2
+msgid "Administration"
+msgstr "Administration"
+
+#: ./forms.py:58
+msgid "Content created."
+msgstr "Der Inhalt wurde erstellt."
+
+#: ./views.py:78
+msgid "Delete"
+msgstr "Löschen"
+
+#: ./views.py:63
+msgid "Deletion successful."
+msgstr "Der Inhalt wurde gelöscht."
+
+#: ./templates/layout.pt:19
+msgid "Gatekeeper"
+msgstr "Gatekeeper"
+
+#: ./templates/layout.pt:27
+msgid "Keeping the gate for"
+msgstr ""
+
+#: ./views.py:49
+msgid "Messages management"
+msgstr "Nachrichten Center"
+
+#: ./templates/login.pt:17
+msgid "Password"
+msgstr "Passwort"
+
+#: ./templates/layout.pt:37
+msgid "Please login"
+msgstr "Bitte Anmelden"
+
+#: ./templates/login.pt:24
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: ./forms.py:87
+msgid "Update"
+msgstr "Bearbeiten"
+
+#: ./templates/login.pt:9
+msgid "Username"
+msgstr "Benutzername"
+
+#: ./forms.py:98
+msgid "Your contents get updated."
+msgstr "Der Inhalt wurde angepasst."
+
+#. Default: "Add message"
+#: ./forms.py:29
+msgid "add_message"
+msgstr "Nachricht hinzufügen"
+
+#. Default: "Edit message"
+#: ./forms.py:68
+msgid "edit_message"
+msgstr "Nachricht bearbeiten"

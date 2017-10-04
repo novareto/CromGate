@@ -5,7 +5,6 @@ src/gatekeeper/login.py
 src/gatekeeper.egg-info/PKG-INFO
 src/gatekeeper.egg-info/SOURCES.txt
 src/gatekeeper.egg-info/dependency_links.txt
-src/gatekeeper.egg-info/entry_points.txt
 src/gatekeeper.egg-info/not-zip-safe
 src/gatekeeper.egg-info/requires.txt
 src/gatekeeper.egg-info/top_level.txt

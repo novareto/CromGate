@@ -35,63 +35,48 @@ def create_rsa_pair(pvt_path, pub_path):
 
 
 with Configuration('config.json') as config:
-    from cromlech.sqlalchemy import create_engine
-    from cromlech.wsgistate.middleware import file_session
-    from gatekeeper import serve_view
-    from gatekeeper.app import Keeper
-    from gk.admin import Admin
-    from gk.login.models import LoginRoot
-    from rutter.urlmap import URLMap
-    
+
     # Generate the key pair
     create_rsa_pair(config['crypto']['privkey'], config['crypto']['pubkey'])
 
     # Dependencies, ZCML free.
     import crom
-    import gatekeeper
-    import gk.login
+    import dolmen.tales
+    import gatekeeper, gk.login, gk.layout
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
-    from dolmen.collection import load
-    
+
     crom.monkey.incompat()
     crom.implicit.initialize()
     registerDefault()
 
     crom.configure(
-        grokker,
-        dolmen.view,
+        dolmen.tales,
         dolmen.forms.base,
         dolmen.forms.ztk,
-        gk.login,
+        dolmen.view,
         gatekeeper,
+        gk.layout,
+        gk.login,
+        grokker,
     )
 
-    load.loadComponents()
-    
-    # Configuring the SQL Connector
-    engine = create_engine(config['db']['uri'], "admin")
-    engine.bind(Admin)
+    from gatekeeper import serve_view
+    from gatekeeper.app import Keeper
+    from gk.login.models import LoginRoot
+    from rutter.urlmap import URLMap
     
     # Login
     loginroot = LoginRoot()
 
-    # Session configuration
-    session_key = config['session'].get('key', SESSION_KEY)
-    session_path = config['session'].get('path', '/tmp')
-    session_timeout = config['session'].get('timeout', 300)
-    session_wrapper = file_session(
-        session_path, key=session_key, timeout=session_timeout)
-    
     # The application.
     mapping = URLMap()
-    mapping['/'] = Keeper(engine, config['crypto']['pubkey']).publisher
-    mapping['/login'] = serve_view(
-        'login', root=loginroot, session_key=session_key)
-    mapping['/unauthorized'] = serve_view(
-        'unauthorized', session_key=session_key)
-    mapping['/timeout'] = serve_view(
-        'timeout', session_key=session_key)
+    mapping['/'] = Keeper(config['crypto']['pubkey'])
+    mapping['/login'] = serve_view('login', root=loginroot)
+    mapping['/unauthorized'] = serve_view('unauthorized')
+    mapping['/timeout'] = serve_view('timeout')
 
     # Session wrapping
-    application = session_wrapper(mapping)
+    application = mapping
+
+    print("Application is ready.")

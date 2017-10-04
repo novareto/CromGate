@@ -1,0 +1,16 @@
+cromlech.webob
+dolmen.forms.base
+dolmen.forms.ztk
+dolmen.location
+dolmen.tales
+dolmen.viewlet
+fanstatic
+gatekeeper
+gk.login
+js.bootstrap
+setuptools
+zope.i18nmessageid
+zope.interface
+
+[test]
+zope.testing

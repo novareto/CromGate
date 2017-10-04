@@ -4,15 +4,13 @@ import os
 import sys
 import json
 
+
 CH_DIR = os.path.abspath(os.path.dirname(__file__))
-CONFIG = os.path.join(CH_DIR, 'config.json')
 
 
 class Configuration(object):
 
-    def __init__(self, filename, directory=None):
-        if directory is None:
-            directory = os.path.abspath(os.path.dirname(__file__))
+    def __init__(self, filename, directory=CH_DIR):
         env = os.path.join(directory, filename)
         if not os.path.isfile(env):
             raise RuntimeError('Configuration file does not exist.')

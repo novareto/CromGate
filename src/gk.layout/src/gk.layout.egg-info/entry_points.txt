@@ -1,0 +1,6 @@
+
+      # -*- Entry points: -*-
+      [fanstatic.libraries]
+      gatekeeper = gk.layout.resources:library
+      datepicker = gk.layout.resources:datepicker
+      

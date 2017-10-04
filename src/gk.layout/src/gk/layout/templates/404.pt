@@ -1,0 +1,4 @@
+<div tal:condition="not view.message">
+  This resource is not available.
+</div>
+<div tal:condition="view.message" tal:content="structure view.message" />

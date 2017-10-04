@@ -29,5 +29,6 @@ setup(name='gk.login',
       extras_require={'test': test_requires},
       install_requires=[
           'setuptools',
+          'dolmen.message',
           ],
       )

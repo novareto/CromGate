@@ -1,0 +1,29 @@
+Metadata-Version: 1.1
+Name: gk.layout
+Version: 0.1.dev0
+Summary: Gatekeeper layout
+Home-page: UNKNOWN
+Author: Novareto
+Author-email: UNKNOWN
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Gatekeeper Layout
+        =================
+        
+         /
+        
+        
+        CHANGES
+        =======
+        
+        0.1 (unreleased)
+        ----------------
+        
+         * FIXME
+        
+        
+Keywords: Gatekeeper Novareto
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: Zope Public License
+Classifier: Programming Language :: Python

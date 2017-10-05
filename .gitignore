@@ -1,0 +1,12 @@
+__pycache__
+eggs
+share
+pip-selfcheck.json
+config.json
+checkouts/*
+cache
+develop-eggs
+include
+lib
+*.egg-info
+*.egg-info

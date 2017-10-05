@@ -34,7 +34,7 @@ def create_rsa_pair(pvt_path, pub_path):
             fd.write(pubkey.exportKey('PEM'))
 
 
-with Configuration('config.json') as config:
+with Configuration('etc/config.json') as config:
 
     # Generate the key pair
     create_rsa_pair(config['crypto']['privkey'], config['crypto']['pubkey'])
@@ -42,7 +42,7 @@ with Configuration('config.json') as config:
     # Dependencies, ZCML free.
     import crom
     import dolmen.tales
-    import gatekeeper, gk.login, gk.layout
+    import gatekeeper, gk.login
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
 
@@ -56,7 +56,7 @@ with Configuration('config.json') as config:
         dolmen.forms.ztk,
         dolmen.view,
         gatekeeper,
-        gk.layout,
+        #gk.layout,
         gk.login,
         grokker,
     )

@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs" tal:condition="manager.viewlets">
+  <tal:entries repeat="action manager.viewlets">
+    <li tal:attributes="class action.url==request.url and 'active' or ''">
+      <a tal:attributes="href action.url;
+			 title action.title;"
+	 tal:content="action.title" />
+    </li>
+  </tal:entries>
+</ul>

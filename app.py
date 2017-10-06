@@ -43,6 +43,7 @@ with Configuration('etc/config.json') as config:
     import crom
     import dolmen.tales
     import gatekeeper, gk.login
+    import gate_keeper
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
 
@@ -57,6 +58,7 @@ with Configuration('etc/config.json') as config:
         dolmen.view,
         gatekeeper,
         #gk.layout,
+        gate_keeper,
         gk.login,
         grokker,
     )

@@ -46,7 +46,8 @@ with Configuration('etc/config.json') as config:
     import gate_keeper
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
-
+    from fanstatic import Fanstatic
+    
     crom.monkey.incompat()
     crom.implicit.initialize()
     registerDefault()
@@ -57,7 +58,6 @@ with Configuration('etc/config.json') as config:
         dolmen.forms.ztk,
         dolmen.view,
         gatekeeper,
-        #gk.layout,
         gate_keeper,
         gk.login,
         grokker,
@@ -67,7 +67,7 @@ with Configuration('etc/config.json') as config:
     from gatekeeper.app import Keeper
     from gk.login.models import LoginRoot
     from rutter.urlmap import URLMap
-    
+
     # Login
     loginroot = LoginRoot()
 
@@ -78,7 +78,7 @@ with Configuration('etc/config.json') as config:
     mapping['/unauthorized'] = serve_view('unauthorized')
     mapping['/timeout'] = serve_view('timeout')
 
-    # Session wrapping
-    application = mapping
+    # Middlewares wrapping
+    application = Fanstatic(mapping)
 
-    print("Application is ready.")
+    print(application, "Application is ready.")

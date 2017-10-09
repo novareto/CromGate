@@ -7,7 +7,9 @@ from cromlech.webob import Response
 from cromlech.browser import request, IPublicationRoot
 from dolmen.view import view_component
 from gatekeeper.app import GateKeeper
-from . import DefaultLayer, tal_template, Page
+from gk.layout import DefaultLayer, Page
+from . import tal_template
+from .resources import gkcss
 
 
 @form_component

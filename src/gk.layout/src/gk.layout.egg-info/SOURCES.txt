@@ -10,9 +10,7 @@ src/gk.layout.egg-info/not-zip-safe
 src/gk.layout.egg-info/requires.txt
 src/gk.layout.egg-info/top_level.txt
 src/gk/layout/__init__.py
-src/gk/layout/forms.py
 src/gk/layout/layout.py
 src/gk/layout/menus.py
 src/gk/layout/resources.py
-src/gk/layout/viewlets.py
 src/gk/layout/views.py

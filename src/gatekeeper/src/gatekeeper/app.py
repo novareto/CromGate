@@ -35,9 +35,10 @@ class Keeper(object):
                 return view
             return query_view(request, root, name=u'notfound')
 
+        # Layer
         request = Request(environ)
         alsoProvides(request, DefaultLayer)
-        import pdb; pdb.set_trace()
+
         view, error = publish(request, self.site)
         if error is not None:
             view = query_view(request, self.site, name='unauthorized')

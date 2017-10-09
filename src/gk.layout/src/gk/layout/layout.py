@@ -21,15 +21,13 @@ class Footer(ViewletManager):
     pass
 
 
-@crom.component
-@crom.sources(IRequest, Interface)
-@crom.target(ILayout)
-class GateLayout(object):
+class Layout(object):
 
     title = "Gatekeeper"
     template = tal_template('layout.pt')
     responseFactory = Response
-
+    resources = [styles]
+    
     def __init__(self, request, context):
         self.context = context
         self.request = request
@@ -45,7 +43,8 @@ class GateLayout(object):
         return namespace
 
     def __call__(self, content, **namespace):
-        styles.need()
+        for resource in self.resources:
+            resource.need()
         environ = self.namespace(**namespace)
         environ['content'] = content
         environ['user'] = self.request.environment.get('REMOTE_USER')

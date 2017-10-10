@@ -10,6 +10,7 @@ from gatekeeper.app import GateKeeper
 from gk.layout import DefaultLayer, Page
 from . import tal_template
 from .resources import gkcss
+from dolmen.view import make_layout_response
 
 
 @form_component
@@ -17,6 +18,12 @@ from .resources import gkcss
 @context(LoginRoot)
 class Login(BaseLoginForm):
     responseFactory = Response
+    make_response = make_layout_response
+
+    def authenticate(self, login, password):
+        if login == "0101010001" and password == "passwort":
+            return True
+        return False
 
 
 @view_component

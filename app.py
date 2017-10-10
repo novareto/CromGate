@@ -42,7 +42,8 @@ with Configuration('etc/config.json') as config:
     # Dependencies, ZCML free.
     import crom
     import dolmen.tales
-    import gatekeeper, gk.login
+    import gatekeeper
+    import gk.login
     import gate_keeper
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
@@ -64,17 +65,25 @@ with Configuration('etc/config.json') as config:
     )
 
     from gatekeeper import serve_view
-    from gatekeeper.app import Keeper
+    #from gatekeeper.app import Keeper
     from gk.login.models import LoginRoot
     from rutter.urlmap import URLMap
 
+    class LoginRoot(LoginRoot):
+
+        def __init__(self, pubkey, dest, cipher):
+            self.pkey = pubkey
+            self.dest = dest
+            self.cipher = cipher
+
     # Login
-    loginroot = LoginRoot()
+    loginroot = LoginRoot(config['crypto']['pubkey'], config['global']['dest'], config['crypto']['cipher'])
+    #loginroot.dest = "http://test.siguv.de"  # BBB
 
     # The application.
     mapping = URLMap()
-    mapping['/'] = Keeper(config['crypto']['pubkey'])
-    mapping['/login'] = serve_view('login', root=loginroot)
+    # mapping['/'] = Keeper(config['crypto']['pubkey'])
+    mapping['/'] = serve_view('login', root=loginroot)
     mapping['/unauthorized'] = serve_view('unauthorized')
     mapping['/timeout'] = serve_view('timeout')
 

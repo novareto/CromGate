@@ -48,6 +48,7 @@ with Configuration('etc/config.json') as config:
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
     from fanstatic import Fanstatic
+    from gk.crypto.ticket import cipher
     
     crom.monkey.incompat()
     crom.implicit.initialize()
@@ -71,19 +72,21 @@ with Configuration('etc/config.json') as config:
 
     class LoginRoot(LoginRoot):
 
-        def __init__(self, pubkey, dest, cipher):
+        def __init__(self, pubkey, dest):
             self.pkey = pubkey
             self.dest = dest
-            self.cipher = cipher
 
     # Login
-    loginroot = LoginRoot(config['crypto']['pubkey'], config['global']['dest'], config['crypto']['cipher'])
-    #loginroot.dest = "http://test.siguv.de"  # BBB
+    loginroot = LoginRoot(
+        config['crypto']['pubkey'],
+        config['global']['dest'],
+    )
 
     # The application.
     mapping = URLMap()
     # mapping['/'] = Keeper(config['crypto']['pubkey'])
-    mapping['/'] = serve_view('login', root=loginroot)
+    mapping['/'] = cipher(serve_view(
+        'login', root=loginroot), None, config['crypto']['cipher'])
     mapping['/unauthorized'] = serve_view('unauthorized')
     mapping['/timeout'] = serve_view('timeout')
 

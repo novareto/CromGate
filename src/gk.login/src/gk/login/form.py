@@ -30,12 +30,12 @@ class LogMe(Action):
     def available(self, form):
         return True
 
-
     def cook(self, form, login, password, authenticated_for, back):
         privkey = tlib.read_key(form.context.pkey)
+        cipher = form.request.environment['aes_cipher']
         val = base64.b64encode(
             tlib.bauth(
-                form.context.cipher,
+                cipher,
                 '%s:%s' % (login, password))
         )
         #val = val.replace('\n', '', 1)

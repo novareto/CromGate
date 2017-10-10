@@ -84,8 +84,8 @@ with Configuration('etc/config.json') as config:
     mapping = URLMap()
     # mapping['/'] = Keeper(config['crypto']['pubkey'])
     mapping['/'] = serve_view('login', root=loginroot)
-    mapping['/unauthorized'] = serve_view('unauthorized')
-    mapping['/timeout'] = serve_view('timeout')
+    mapping['/unauthorized'] = serve_view('unauthorized', root=loginroot)
+    mapping['/timeout'] = serve_view('timeout', root=loginroot)
 
     # Middlewares wrapping
     application = Fanstatic(mapping)

@@ -20,6 +20,10 @@ class Login(BaseLoginForm):
     responseFactory = Response
     make_response = make_layout_response
 
+    def update(self):
+        print("update")
+        gkcss.need()
+
     def authenticate(self, login, password):
         if login == "0101010001" and password == "passwort":
             return True
@@ -29,7 +33,7 @@ class Login(BaseLoginForm):
 @view_component
 @name('timeout')
 @context(IPublicationRoot)
-@request(DefaultLayer)
+#@request(DefaultLayer)
 class Timeout(Page):
 
     template = tal_template('timeout.pt')

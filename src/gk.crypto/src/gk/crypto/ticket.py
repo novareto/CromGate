@@ -63,11 +63,11 @@ class AESCipher(object):
     @staticmethod
     def pkcs1_pad(data):
         length = AES.block_size - (len(data) % AES.block_size)
-        return data + ('\0' * length)
+        return data + (b'\0' * length)
 
     @staticmethod
     def pkcs1_unpad(data):
-        return data.rstrip('\0')
+        return data.rstrip(b'\0')
 
     @staticmethod
     def pkcs7_pad(data):
@@ -200,6 +200,8 @@ def create_ticket(privkey, uid, validuntil, ip=None, tokens=(),
 
 
 def cipher(app, global_conf, cipher_key=None):
+    if not isinstance(cipher_key, bytes):
+        cipher_key = cipher_key.encode('utf-8')
     def cipher_layer(environ, start_response):
         environ['aes_cipher'] = AESCipher(cipher_key)
         return app(environ, start_response)
@@ -207,6 +209,8 @@ def cipher(app, global_conf, cipher_key=None):
 
 
 def bauth(aes, val):
+    if not isinstance(val, bytes):
+        val = val.encode('utf-8')
     return aes.encrypt(val)
 
 

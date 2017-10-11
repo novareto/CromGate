@@ -11,6 +11,7 @@ from gk.layout import DefaultLayer, Page
 from . import tal_template
 from .resources import gkcss
 from dolmen.view import make_layout_response
+from cromlech.browser.interfaces import IURL
 
 
 @form_component
@@ -20,13 +21,17 @@ class Login(BaseLoginForm):
     responseFactory = Response
     make_response = make_layout_response
 
+    @property
+    def action_url(self):
+        url = IURL(self.context, self.request, default=None)
+        return url
+
     def update(self):
-        print("update")
         gkcss.need()
 
     def authenticate(self, login, password):
         if login == "0101010001" and password == "passwort":
-            return True
+            return ['test.siguv.de', ]
         return False
 
 

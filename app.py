@@ -106,7 +106,7 @@ with Configuration('etc/config.json') as config:
 
     # Login
     loginroot = LoginRoot(
-        config['crypto']['pubkey'],
+        config['crypto']['privkey'],
         config['global']['dest'],
     )
 
@@ -115,7 +115,7 @@ with Configuration('etc/config.json') as config:
     # mapping['/'] = Keeper(config['crypto']['pubkey'])
     mapping['/'] = cipher(serve_view(
         'login', root=loginroot), None, config['crypto']['cipher'])
-    mapping['/'] = serve_view('login', root=loginroot)
+    #mapping['/'] = serve_view('login', root=loginroot)
     mapping['/unauthorized'] = serve_view('unauthorized', root=loginroot)
     mapping['/timeout'] = serve_view('timeout', root=loginroot)
 

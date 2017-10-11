@@ -32,7 +32,8 @@ def serve_view(viewname, root=None, skin_layer=None):
                 form = query_view(request, root or environ, name=viewname)
                 response = form()(environ, start_response)
             except DirectResponse as dr:
-                response = dr.response
+                print(dr)
+                response = dr.response(environ, start_response)
         return response
 
     return app

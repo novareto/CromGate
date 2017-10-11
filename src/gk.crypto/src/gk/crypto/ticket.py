@@ -194,8 +194,15 @@ def create_ticket(privkey, uid, validuntil, ip=None, tokens=(),
     if udata:
         v += ';udata=%s' % udata
     for k,fv in extra_fields:
+        if isinstance(fv, bytes):
+            fv = fv.decode('utf-8')
         v += ';%s=%s' % (k,fv)
-    v += ';sig=%s' % calculate_digest(privkey, v)
+
+    sig = calculate_digest(privkey, v.encode('utf-8'))
+    v += ';sig=%s' % sig.decode('utf-8')
+
+    print(v)
+
     return v
 
 

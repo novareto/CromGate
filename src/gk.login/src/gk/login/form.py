@@ -48,7 +48,7 @@ class LogMe(Action):
         back = form.back(login)
         res = HTTPFound(location=back)
         res.set_cookie('auth_pubtkt', quote(ticket), path='/',
-                       domain='novareto.de', secure=False)
+                       domain='siguv.de', secure=False)
         return res
 
     def __call__(self, form):
@@ -66,7 +66,6 @@ class LogMe(Action):
             send(_(u'Login successful.'))
             res = self.cook(
                 form, login, password, authenticated_for, form.context.dest)
-            print(res)
             raise DirectResponse(res)
         else:
             sent = send(_(u'Login failed.'))

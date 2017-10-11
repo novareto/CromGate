@@ -32,7 +32,7 @@ class Login(BaseLoginForm):
     def authenticate(self, login, password):
         if login == "0101010001" and password == "passwort":
             return ['test.siguv.de', ]
-        return False
+        return []
 
 
 @view_component

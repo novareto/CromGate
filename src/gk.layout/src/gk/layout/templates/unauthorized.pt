@@ -1,4 +1,0 @@
-<div tal:condition="not view.message">
-  You are not authorized any further.
-</div>
-<div tal:condition="view.message" tal:content="structure view.message" />

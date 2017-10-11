@@ -8,7 +8,7 @@ from dolmen.template import TALTemplate
 from dolmen.view import View, make_layout_response
 
 
-i18n = MessageFactory("gk.layout")
+i18n = MessageFactory("gatekeeper")
 TEMPLATE_DIR = path.join(path.dirname(__file__), 'templates')
 
 

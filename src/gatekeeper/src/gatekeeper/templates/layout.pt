@@ -59,7 +59,3 @@
     <div id="footer" tal:content="structure slot:footer" />
   </body>
 </html>
-
-
-
-    

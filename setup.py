@@ -4,8 +4,6 @@ import sys, os
 
 version = '0.1'
 
-import pdb; pdb.set_trace() 
-
 setup(name='gate_keeper',
       version=version,
       description="",
@@ -22,7 +20,7 @@ setup(name='gate_keeper',
       zip_safe=False,
       install_requires=[
           'fanstatic',
-          'gk.layout',
+          'gatekeeper',
       ],
       entry_points = {
           'fanstatic.libraries': [

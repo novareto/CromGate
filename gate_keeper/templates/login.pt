@@ -1,4 +1,4 @@
-<div i18n:domain="gk.layout">
+<div i18n:domain="gatekeeper">
   <h2 tal:content="message" />
 
   <form id="login-form" method="POST" action="">

@@ -7,7 +7,6 @@ from dolmen.viewlet import ViewletManager, viewlet_manager
 from cromlech.i18n import getLocale
 from cromlech.webob import Response
 from cromlech.browser import IRequest, ILayout
-from .resources import styles
 from . import DefaultLayer, tal_template
 
 
@@ -26,7 +25,7 @@ class Layout(object):
     title = "Gatekeeper"
     template = tal_template('layout.pt')
     responseFactory = Response
-    resources = [styles]
+    resources = []
     
     def __init__(self, request, context):
         self.context = context

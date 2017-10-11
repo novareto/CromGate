@@ -28,7 +28,12 @@ setup(name='gk.login',
       zip_safe=False,
       extras_require={'test': test_requires},
       install_requires=[
-          'setuptools',
+          'cromlech.browser',
+          'dolmen.forms.base',
+          'dolmen.forms.ztk',
           'dolmen.message',
+          'gk.crypto',
+          'setuptools',
+          'zope.i18nmessageid',
           ],
       )

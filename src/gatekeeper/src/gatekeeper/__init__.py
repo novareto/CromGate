@@ -5,6 +5,7 @@ from zope.i18nmessageid import MessageFactory
 from cromlech.i18n import Locale
 from cromlech.webob.request import Request
 from cromlech.browser import IView
+from gk.login.interfaces import DirectResponse
 
 
 def query_view(request, obj, name=""):
@@ -24,11 +25,14 @@ def serve_view(viewname, root=None, skin_layer=None):
 
     def app(environ, start_response):
         with Locale('de'):
-            request = Request(environ)
-            if skin_layer:
-                alsoProvides(request, skin_layer)
-            form = query_view(request, root or environ, name=viewname)
-            response = form()(environ, start_response)
+            try:
+                request = Request(environ)
+                if skin_layer:
+                    alsoProvides(request, skin_layer)
+                form = query_view(request, root or environ, name=viewname)
+                response = form()(environ, start_response)
+            except DirectResponse as dr:
+                response = dr.response
         return response
 
     return app

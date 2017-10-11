@@ -1,11 +1,39 @@
 # -*- coding: utf-8 -*-
 
 from os import chmod, path, makedirs
-from loader import Configuration
+#from loader import Configuration
 
 
 SESSION_KEY = "gatekeeper.session"
 
+import os
+import sys
+import json
+
+
+CH_DIR = os.path.abspath(os.path.dirname(__file__))
+
+
+class Configuration(object):
+
+    def __init__(self, filename, directory=CH_DIR):
+        env = os.path.join(directory, filename)
+        if not os.path.isfile(env):
+            raise RuntimeError('Configuration file does not exist.')
+        self.environ = env
+        self.backup = sys.path[:]
+
+    def __enter__(self):
+        with open(self.environ, "r") as fd:
+            env = json.load(fd)
+
+        paths = env['paths']
+        sys.path[0:0] = paths
+        return env['conf']
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # we need to make something about error handling.
+        sys.path = self.backup
 
 def create_rsa_pair(pvt_path, pub_path):
     from Crypto.PublicKey import RSA

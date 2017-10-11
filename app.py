@@ -115,8 +115,9 @@ with Configuration('etc/config.json') as config:
     # mapping['/'] = Keeper(config['crypto']['pubkey'])
     mapping['/'] = cipher(serve_view(
         'login', root=loginroot), None, config['crypto']['cipher'])
-    mapping['/unauthorized'] = serve_view('unauthorized')
-    mapping['/timeout'] = serve_view('timeout')
+    mapping['/'] = serve_view('login', root=loginroot)
+    mapping['/unauthorized'] = serve_view('unauthorized', root=loginroot)
+    mapping['/timeout'] = serve_view('timeout', root=loginroot)
 
     # Middlewares wrapping
     application = Fanstatic(mapping)

@@ -7,8 +7,8 @@ from dolmen.forms.base import name, context, form_component
 from dolmen.view import make_layout_response, view_component
 from gatekeeper import DefaultLayer, Page
 from gatekeeper.app import GateKeeper
-from gk.login.form import BaseLoginForm
-from gk.login.models import LoginRoot
+from gatekeeper.login.form import BaseLoginForm
+from gatekeeper.login.models import LoginRoot
 
 from . import tal_template
 from .resources import gkcss

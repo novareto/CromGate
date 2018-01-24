@@ -10,8 +10,8 @@ from cromlech.webob import Response
 from cromlech.webob.request import Request
 from dolmen.template import TALTemplate
 from dolmen.view import View, make_layout_response
-from gk.login.interfaces import DirectResponse
 from zope.i18nmessageid import MessageFactory
+from .login.interfaces import DirectResponse
 
 
 i18n = MessageFactory("gatekeeper")

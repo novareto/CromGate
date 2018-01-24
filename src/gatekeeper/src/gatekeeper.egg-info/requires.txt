@@ -4,9 +4,7 @@ cromlech.webob
 dolmen.tales
 dolmen.template
 dolmen.view
+dolmen.message
 dolmen.viewlet
-gk.crypto
-gk.login
 js.bootstrap
 pycryptodome
-setuptools

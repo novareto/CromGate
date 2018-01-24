@@ -21,6 +21,10 @@ setup(name='gate_keeper',
       install_requires=[
           'fanstatic',
           'gatekeeper',
+          'grokker',
+          'dolmen.view',
+          'dolmen.forms.base',
+          'dolmen.forms.ztk',
       ],
       entry_points = {
           'fanstatic.libraries': [

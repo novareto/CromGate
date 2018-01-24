@@ -3,9 +3,6 @@
 from os import chmod, path, makedirs
 #from loader import Configuration
 
-
-SESSION_KEY = "gatekeeper.session"
-
 import os
 import sys
 import json
@@ -34,6 +31,7 @@ class Configuration(object):
     def __exit__(self, exc_type, exc_val, exc_tb):
         # we need to make something about error handling.
         sys.path = self.backup
+
 
 def create_rsa_pair(pvt_path, pub_path):
     from Crypto.PublicKey import RSA
@@ -71,31 +69,28 @@ with Configuration('etc/config.json') as config:
     import crom
     import dolmen.tales
     import gatekeeper
-    import gk.login
     import gate_keeper
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
     from fanstatic import Fanstatic
-    from gk.crypto.ticket import cipher
-    
+    from gatekeeper.ticket import cipher
+
     crom.monkey.incompat()
     crom.implicit.initialize()
     registerDefault()
 
     crom.configure(
-        dolmen.tales,
         dolmen.forms.base,
         dolmen.forms.ztk,
+        dolmen.tales,
         dolmen.view,
-        gatekeeper,
         gate_keeper,
-        gk.login,
+        gatekeeper,
         grokker,
     )
 
     from gatekeeper import serve_view
-    #from gatekeeper.app import Keeper
-    from gk.login.models import LoginRoot
+    from gatekeeper.login.models import LoginRoot
     from rutter.urlmap import URLMap
 
     class LoginRoot(LoginRoot):

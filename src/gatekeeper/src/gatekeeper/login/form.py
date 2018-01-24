@@ -13,7 +13,7 @@ from dolmen.forms.base import FAILURE, SuccessMarker
 from dolmen.forms.base import Form, Actions, Action, Fields
 from dolmen.message import send
 
-from gk.crypto import ticket as tlib
+from gatekeeper import ticket as tlib
 from urllib.parse import quote
 from webob.exc import HTTPFound
 from zope.i18nmessageid import MessageFactory

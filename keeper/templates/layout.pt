@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css" href="/static/gk.css">
+    <title tal:content="layout.title" />
+    <base tal:attributes="href request.script_name" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <div id="head">
+          <div id="titelbild"></div>
+          <div id="logo"></div>
+        </div>
+        <div id="bar"></div>    
+      </div>
+      <div id="content">
+        <div class="content">
+          <div tal:content="structure slot:top"> </div>
+          <div tal:replace="structure content"> </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

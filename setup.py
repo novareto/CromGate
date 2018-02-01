@@ -4,7 +4,7 @@ import sys, os
 
 version = '0.1'
 
-setup(name='gate_keeper',
+setup(name='keeper',
       version=version,
       description="",
       long_description=""" """,
@@ -14,8 +14,8 @@ setup(name='gate_keeper',
       author_email='',
       url='',
       license='',
-      packages=find_packages('gate_keeper'),
-      package_dir = {'': 'gate_keeper'},
+      packages=find_packages('keeper'),
+      package_dir = {'': 'keeper'},
       include_package_data=True,
       zip_safe=False,
       install_requires=[
@@ -28,7 +28,7 @@ setup(name='gate_keeper',
       ],
       entry_points = {
           'fanstatic.libraries': [
-              'gate_keeper=gate_keeper.resources:library',
+              'keeper=keeper.resources:library',
           ],
       },
 )

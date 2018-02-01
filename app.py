@@ -1,3 +1,4 @@
+#!./bin/python3.4
 # -*- coding: utf-8 -*-
 
 from os import chmod, path, makedirs
@@ -63,16 +64,15 @@ def create_rsa_pair(pvt_path, pub_path):
 with Configuration('etc/config.json') as config:
 
     # Generate the key pair
-    create_rsa_pair(config['crypto']['privkey'], config['crypto']['pubkey'])
+    # create_rsa_pair(config['crypto']['privkey'], config['crypto']['pubkey'])
 
     # Dependencies, ZCML free.
     import crom
     import dolmen.tales
     import gatekeeper
-    import gate_keeper
+    import keeper
     import grokker, dolmen.view, dolmen.forms.base, dolmen.forms.ztk
     from dolmen.forms.ztk.fields import registerDefault
-    from fanstatic import Fanstatic
     from gatekeeper.ticket import cipher
 
     crom.monkey.incompat()
@@ -84,7 +84,7 @@ with Configuration('etc/config.json') as config:
         dolmen.forms.ztk,
         dolmen.tales,
         dolmen.view,
-        gate_keeper,
+        keeper,
         gatekeeper,
         grokker,
     )
@@ -107,13 +107,12 @@ with Configuration('etc/config.json') as config:
 
     # The application.
     mapping = URLMap()
-    print( config['crypto']['cipher'])
     mapping['/'] = cipher(serve_view(
         'login', root=loginroot), None, config['crypto']['cipher'])
     mapping['/unauthorized'] = serve_view('unauthorized', root=loginroot)
     mapping['/timeout'] = serve_view('timeout', root=loginroot)
 
-    # Middlewares wrapping
-    application = Fanstatic(mapping)
+    # Middlewares wrapping if needed
+    application = mapping
 
     print(application, "Application is ready.")

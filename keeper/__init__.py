@@ -13,4 +13,4 @@ TEMPLATE_DIR = path.join(path.dirname(__file__), 'templates')
 
 
 def tal_template(name):
-    return TALTemplate(name, _prefix=TEMPLATE_DIR)
+    return TALTemplate(path.join(TEMPLATE_DIR, name))

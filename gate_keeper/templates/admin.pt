@@ -1,9 +1,0 @@
-<div i18n:domain="gk.layout" id="admin">
-  <h1 i18n:translate="">Administration</h1>
-  <ul> 
-    <li tal:repeat="link view.links">
-      <a tal:attributes="href link['url']"
-         tal:content="link['title']" />
-    </li>
-  </ul>
-</div>
